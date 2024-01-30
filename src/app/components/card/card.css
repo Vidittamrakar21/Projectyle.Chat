@@ -1,0 +1,198 @@
+.outer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(8, 8, 8, 0.563);
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.dibba{
+    height: 370px;
+    width: 650px;
+    background-color: rgb(48, 47, 47);
+    border-radius: 8px;
+    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    user-select: none;
+}
+
+#avatars{
+    height: 80px;
+    width: 580px;
+    border-radius: 8px;
+    background-color: rgb(19, 19, 19);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+#tars{
+    height: 80px;
+    width: 580px;
+    border-radius: 8px;
+    background-color: rgb(19, 19, 19);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 20px;
+
+}
+
+
+
+.ava{
+    height: 60px;
+    width: 60px;
+    border-radius: 8px;
+    
+}
+
+.light{
+    border: 2px solid coral;
+}
+
+.ava img{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.dibba input{
+    height: 40px;
+    width: 580px;
+    background-color: rgb(19, 19, 19);
+    border-radius: 8px;
+    border: none;
+    margin-top: 40px;
+    font-size: 18px;
+    color: rgb(231, 231, 231);
+}
+
+.dibba button{
+    height: 45px;
+    width: 580px;
+    border: none;
+    border-radius: 8px;
+    background-color: coral;
+    margin-top: 25px;
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.gayab{
+    display: none;
+}
+
+#tars h2{
+    color: coral;
+    font-weight: 400;
+    padding: 8px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 600px){
+    .outer{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(8, 8, 8, 0.563);
+        z-index: 8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+    }
+    
+    .dibba{
+        height: 390px;
+        width: 320px;
+        background-color: rgb(48, 47, 47);
+        border-radius: 8px;
+        z-index: 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        user-select: none;
+    }
+    
+    #avatars{
+        height: 80px;
+        width: 300px;
+        border-radius: 8px;
+        background-color: rgb(19, 19, 19);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    
+    }
+    #tars{
+        height: 80px;
+        width: 300px;
+        border-radius: 8px;
+        background-color: rgb(19, 19, 19);
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    
+    }
+
+   
+    
+    .ava{
+        height: 60px;
+        width: 60px;
+        border-radius: 8px;
+        
+    }
+    
+    .light{
+        border: 2px solid coral;
+    }
+    
+    .ava img{
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+    }
+    
+    .dibba input{
+        height: 40px;
+        width: 300px;
+        background-color: rgb(19, 19, 19);
+        border-radius: 8px;
+        border: none;
+        margin-top: 40px;
+        font-size: 18px;
+        color: rgb(231, 231, 231);
+    }
+    
+    .dibba button{
+        height: 45px;
+        width: 300px;
+        border: none;
+        border-radius: 8px;
+        background-color: coral;
+        margin-top: 25px;
+        color: white;
+        font-size: 19px;
+        cursor: pointer;
+    }
+}
+

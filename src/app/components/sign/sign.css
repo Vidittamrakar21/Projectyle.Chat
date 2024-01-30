@@ -1,0 +1,343 @@
+.outer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(8, 8, 8, 0.563);
+    z-index: 8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.sign{
+    height: 500px;
+    width: 400px;
+    z-index: 9;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    user-select: none;
+}
+
+.signmail{
+    height: 500px;
+    width: 400px;
+    z-index: 9;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    user-select: none;
+}
+
+.signmail h2{
+    font-weight: 700;
+    color: rgb(39, 39, 39);
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.signmail h5{
+    font-weight: 400;
+    color: rgb(39, 39, 39);
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.signmail input{
+    margin-left: 20px;
+    height: 35px;
+    width: 280px;
+}
+
+
+#cross{
+    position: relative;
+    top: 20px;
+    left: 160px
+}
+
+#gog{
+    height: 25px;
+    width: 25px;
+
+}
+
+#gog img{
+    height: 100%;
+    width: 100%;
+}
+
+.sign h3{
+    font-weight: 500;
+}
+
+#orr{
+    font-weight: 500;
+   margin-top: 30px;
+}
+
+.coon{
+    width: 350px;
+    height: 39px;
+    border: 0.5px solid rgb(117, 115, 115);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+
+.coon:hover{
+    border: none;
+    background-color: rgba(214, 214, 214, 0.563);
+}
+
+.coon h4{
+    color: rgb(93, 93, 93);
+    font-weight: 400;
+}
+
+#phono{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 40px;
+    width: 350px;
+    margin-top: 30px;
+}
+
+#phono input{
+    border: none;
+    background-color: white;
+    border-bottom: 0.5px solid rgb(117, 115, 115) ;
+    height: 35px;
+    width: 280px;
+}
+
+.cont{
+    height: 40px;
+    width: 350px;
+    margin-top: 60px;
+    background-color: #F84464;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.econt{
+    height: 40px;
+    width: 350px;
+    margin-top: 70px;
+    margin-left: 20px;
+    background-color: #1D2238;
+    font-size: 16px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.gayab{
+    display: none;
+}
+
+#caret{
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
+
+#terms{
+    position: relative;
+    top: 120px;
+    color: gray;
+    font-weight: 500;
+}
+
+#terms span{
+    text-decoration: underline;
+}
+
+.ee{
+    background-color: white;
+    border: none;
+    border: 1px solid rgb(141, 141, 141);
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 600px){
+    .outer{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(8, 8, 8, 0.563);
+        z-index: 8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        cursor: pointer;
+    }
+    
+    .sign{
+        height: 500px;
+        width: 340px;
+        z-index: 9;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-direction: column;
+        user-select: none;
+    }
+    
+    .signmail{
+        height: 500px;
+        width: 340px;
+        z-index: 9;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-direction: column;
+        user-select: none;
+    }
+    
+    .signmail h2{
+        font-weight: 700;
+        color: rgb(39, 39, 39);
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+    
+    .signmail h5{
+        font-weight: 400;
+        color: rgb(39, 39, 39);
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+    
+    .signmail input{
+        margin-left: 20px;
+        height: 35px;
+        width: 280px;
+        margin-top: 12px;
+    }
+    
+    
+
+    .econt{
+        height: 40px;
+        width: 320px;
+        margin-top: 50px;
+        margin-left: 10px;
+        background-color: #1D2238;
+        font-size: 16px;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    
+    
+    #cross{
+        position: relative;
+        top: 20px;
+        left: 140px
+    }
+    
+    #gog{
+        height: 25px;
+        width: 25px;
+    
+    }
+    
+    #gog img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .sign h3{
+        font-weight: 500;
+    }
+    
+    #orr{
+        font-weight: 500;
+       margin-top: 30px;
+    }
+    
+    .coon{
+        width: 310px;
+        height: 39px;
+        border: 0.5px solid rgb(117, 115, 115);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 40px;
+        border-radius: 5px;
+    }
+    
+    .coon:hover{
+        border: none;
+        background-color: rgba(214, 214, 214, 0.563);
+    }
+    
+    .coon h4{
+        color: rgb(93, 93, 93);
+        font-weight: 400;
+    }
+    
+    #phono{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 40px;
+        width: 330px;
+        margin-top: 30px;
+    }
+    
+    #phono input{
+        border: none;
+        background-color: white;
+        border-bottom: 0.5px solid rgb(117, 115, 115) ;
+        height: 35px;
+        width: 280px;
+    }
+    
+    .cont{
+        height: 40px;
+        width: 310px;
+        margin-top: 60px;
+        background-color: #F84464;
+        font-size: 16px;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+    
+    .gayab{
+        display: none;
+    }
+    
+    #caret{
+        position: relative;
+        top: 20px;
+        left: 10px;
+    }
+}

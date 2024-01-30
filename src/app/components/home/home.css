@@ -1,0 +1,294 @@
+
+
+  @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap');
+
+.home{
+    min-height: 950px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Mukta', sans-serif;
+}
+
+.home h1{
+    font-family: 'Mukta', sans-serif;
+    font-size: 38px;
+    color: white;
+}
+
+.home h1 span{
+    color: #00FDA7;
+}
+
+#logo{
+    height: 250px;
+    width: 250px;
+}
+
+#logo img{
+    height: 100%;
+    width: 100%;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(48, 47, 47, 0.541);
+    height: 70px;
+    width: 550px;
+    /* border: 1px solid white; */
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.box:hover{
+    background-color: rgba(97, 95, 95, 0.541);
+}
+
+.bot:hover{
+    background-color: rgba(97, 95, 95, 0.541);
+}
+
+.box h2{
+    color: white;
+    margin-right: 200px;
+}
+
+.home h4{
+    color: white;
+    font-weight: 400;
+    margin-top: 35px;
+
+}
+
+.chotu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid white;
+    border-radius: 8px;
+    margin-left: 15px;
+}
+
+.join{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgba(48, 47, 47, 0.541);
+    height: 200px;
+    width: 550px;
+    /* border: 1px solid white; */
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+
+}
+
+.join input{
+    height: 38px;
+    width: 490px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(155, 154, 154, 0.432);
+    color: aqua;
+    font-size: 18px;
+}
+
+.join input::placeholder{
+    font-size: 18px;
+    color: rgb(209, 207, 207);
+}
+
+.join button{
+    height: 40px;
+    width: 500px;
+    border-radius: 8px;
+    margin-top: 30px;
+    border: none;
+    background-color: #1D2238;
+    color: white;
+    font-size: 18px;
+}
+
+.join button:hover{
+    background-color: #3b4057;
+}
+
+.bot{
+    background-color: rgba(48, 47, 47, 0.541);
+    height: 70px;
+    width: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 8px;
+    user-select: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.bot h2{
+    margin-left: 15px;
+}
+
+.botimg{
+    height: 60px;
+    width: 60px;
+    border-radius: 8px;
+    margin-left: 5px;
+    
+}
+
+.botimg img{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 600px){
+    .home{
+        min-height: 850px;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Mukta', sans-serif;
+    }
+    
+    .home h1{
+        font-family: 'Mukta', sans-serif;
+        font-size: 38px;
+        color: white;
+    }
+    
+    #logo{
+        height: 180px;
+        width: 180px;
+    }
+    
+    #logo img{
+        height: 100%;
+        width: 100%;
+    }
+    
+    .box{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgba(48, 47, 47, 0.541);
+        height: 55px;
+        width: 310px;
+        /* border: 1px solid white; */
+        border-radius: 8px;
+        user-select: none;
+        cursor: pointer;
+    }
+    
+    .box:hover{
+        background-color: rgba(97, 95, 95, 0.541);
+    }
+    
+    .box h2{
+        color: white;
+        margin-right: 60px;
+        font-size: 19px;
+    }
+
+    .bot h2{
+        color: white;
+        /* margin-right: 60px; */
+        font-size: 19px;
+    }
+    
+    .home h4{
+        color: white;
+        font-weight: 400;
+        margin-top: 35px;
+    
+    }
+    
+    .chotu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 40px;
+        border: 1px solid white;
+        border-radius: 8px;
+        margin-left: 15px;
+    }
+    
+    .join{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgba(48, 47, 47, 0.541);
+        height: 150px;
+        width: 310px;
+        /* border: 1px solid white; */
+        border-radius: 8px;
+        user-select: none;
+        cursor: pointer;
+    
+    }
+    
+    .join input{
+        height: 38px;
+        width: 280px;
+        border: none;
+        border-radius: 8px;
+        background-color: rgba(155, 154, 154, 0.432);
+        color: aqua;
+        font-size: 18px;
+    }
+    
+    .join input::placeholder{
+        font-size: 18px;
+        color: rgb(209, 207, 207);
+    }
+    
+    .join button{
+        height: 40px;
+        width: 290px;
+        border-radius: 8px;
+        margin-top: 30px;
+        border: none;
+        background-color: #1D2238;
+        color: white;
+        font-size: 18px;
+    }
+    
+    .join button:hover{
+        background-color: #3b4057;
+    }
+
+    .bot{
+        background-color: rgba(48, 47, 47, 0.541);
+        height: 55px;
+        width: 310px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        border-radius: 8px;
+        user-select: none;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .botimg{
+        height: 50px;
+        width: 50px;
+        border-radius: 8px;
+        margin-left: 5px;
+        
+    }
+}
