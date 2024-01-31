@@ -40,7 +40,7 @@ function Botpage (){
                 <div id="logo">
                     <img src="/images/img5.jpg" alt="" />
                 </div>
-                <h2>Projectyle's Chat Bot</h2>
+                <h2>Projectyle &apos;s Chat Bot</h2>
             </div>
 
 
@@ -56,13 +56,13 @@ function Botpage (){
                 <p><span>Me</span> hiii how are you ggbkf gvkshkjv kvhksdfjgvhkgvhkhk hjhjkvkjfrfvchsfhekkhekj  hvchehufhdfsdvksk vjhvkhvkkfhksdh vkhshsfkh kvhskjhf kkfkkfh khkfhsf</p>
                 </div> */}
 
-                {chat.map((cht)=>(
-                     <div className={cht.from === 'me'? "msg dm": "msg"}>
+                {chat.map((cht,index)=>(
+                     <div className={cht.from === 'me'? "msg dm": "msg"} key={index}>
                      <p><span>{cht.from}</span>{cht.msg}</p>
                  </div>
                 ))}
                 
-            </div>
+            </div>  
             <div id="inpbox">
                 
                 <input type="text" placeholder='&nbsp; Type Something..' onChange={handlemsg} value={m}/>

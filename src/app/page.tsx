@@ -15,7 +15,7 @@ export default function Home() {
     <Homeplay></Homeplay>
     
     <Sign></Sign>
-     <Card></Card>
+     <Card></Card>  
    </Chatprovider>
     
     </main>
