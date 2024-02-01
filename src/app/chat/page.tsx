@@ -1,16 +1,35 @@
 "use client"
 
 import './chat.css';
-import React ,{useMemo,useEffect, useState, ChangeEvent,MouseEvent}from 'react';
+import React ,{useMemo,useEffect, useState, ChangeEvent,useContext}from 'react';
+import { ChatContext } from '@/context/contextapi';
 import { io } from "socket.io-client";
+import { useRouter ,useSearchParams} from 'next/navigation';
 function Chatpage (){
+  
+  const router = useRouter()
+  const data = useContext(ChatContext);
+  const searchparams = useSearchParams()
+  
+  const room = searchparams.get('room')
+  const name = searchparams.get('name')
 
-    const [stat,setstatus] = useState("typing...")
+    const [stat,setstatus] = useState(`${name} typing...`)
     const [m,g] = useState("")
     const [message,setmsg] = useState("")
-    const [room, setroom] = useState("myroom")
+    // const [room, setroom] = useState("")
     const [typee, settype] = useState("")
-    const [chats, setchats] = useState<string[]>([])
+    const [chats, setchats] = useState([{from: name, msg: "" } ])
+    const [mychats, setmychats] = useState({} )
+    const [state,setstate] = useState<string[]>([])
+
+    const socket = useMemo(
+      () =>
+        io("http://localhost:8080", {
+          withCredentials: true,
+        }),
+      []
+    )
 
     const handleSubmit = async (e:ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -19,19 +38,22 @@ function Chatpage (){
             //  setstatus("")
              setmsg("")
             socket.emit("status", { m,room });
+            
         }
         else{
             // setstatus("typing...")
             socket.emit("status", { stat,room });
             setmsg(e.target.value)
+            setmychats({from: name, msg: e.target.value})
+            console.log(mychats)
         }
         
       };
 
       const sendmessage = ()=>{
-        
+        setchats((messages) => [...messages, {from: name, msg: message}]);
         socket.emit("status", { m,room });
-        socket.emit("message", { message,room });
+        socket.emit("message", { mychats,room });
         setmsg("")
       }
 
@@ -41,17 +63,14 @@ function Chatpage (){
         
       };
 
-    const socket = useMemo(
-        () =>
-          io("http://localhost:8080", {
-            withCredentials: true,
-          }),
-        []
-      )
+   
       
       useEffect(() => {
+
+          // setroom(`${data?.room}`)
+          // console.log(data?.room)
           console.log(socket)
-          socket.emit("chatstart", 'hiiii');
+          socket.emit("chatstart", name);
           joinRoomHandler()
 
           socket.on("receive-status", (data) => {
@@ -65,6 +84,14 @@ function Chatpage (){
             
             setchats((messages) => [...messages, data]);
           });
+
+          socket.on("user-joined", (data) => {
+            console.log(data);
+            
+            setstate((messages) => [...messages, data]);
+          });
+
+          
       
     
         // return () => {
@@ -78,7 +105,7 @@ function Chatpage (){
                 <div id="logo">
                     <img src="/images/img2.jpeg" alt="" />
                 </div>
-               <div>
+               <div id='typing'>
                <h2>Sweet Family</h2>
                <h4>{typee}</h4>
                </div>
@@ -86,18 +113,22 @@ function Chatpage (){
 
 
             <div id="chatbox">
-                <div className="msg">
-                    <p><span>Vidit</span>hi</p>
-                </div>
-                <div className="msg dm">
-                <p><span>Me</span> hiii how are you ggbkf gvkshkjv kvhksdfjgvhkgvhkhk hjhjkvkjfrfvchsfhekkhekj  hvchehufhdfsdvksk vjhvkhvkkfhksdh vkhshsfkh kvhskjhf kkfkkfh khkfhsf</p>
-                </div>
+              
+                {state.map((item)=>(
+                   <div id='joined'>
+                   <div id='blue'>
+                   </div>
+                   <h3>{item}</h3>
+                 </div>
+                ))} 
 
-                {chats.map((msg)=>(
-                     <div className="msg">
-                     <p><span>Vidit</span>{msg}</p>
+                {chats.map((item,index)=>(
+                     <div className={item.from=== name?"msg dm": "msg"} key={index}>
+                     <p><span>{item.from=== name?"me":item.from}</span>{item.msg}</p>
                  </div>
                 ))}
+                
+               
                 
             </div>
             <div id="inpbox">

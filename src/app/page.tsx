@@ -5,10 +5,17 @@ import styles from "./page.module.css";
 import Homeplay from "./components/home/home";
 import Sign from './components/sign/sign'
 import Card from "./components/card/card";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 import { Chatprovider } from "@/context/contextapi";
+
 export default function Home() {
+
+
+ 
+
   return (
+
+   
     <main className={styles.main}>
     
    <Chatprovider>

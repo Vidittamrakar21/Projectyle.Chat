@@ -1,11 +1,23 @@
 import './home.css';
-import React from 'react';
-import { useContext } from 'react';
-import Sign from '../sign/sign'
+import React, { useEffect } from 'react';
+import { useContext ,useMemo, useState, ChangeEvent} from 'react';
 import { ChatContext } from '@/context/contextapi';
 import Link from 'next/link';
+import { io } from "socket.io-client";
 
 function Homeplay (){
+
+    const [room,setuserroom] = useState("")
+    const [name,setname] = useState("")
+
+    // const socket = useMemo(
+    //     () =>
+    //       io("http://localhost:8080", {
+    //         withCredentials: true,
+    //       }),
+    //     []
+    //   )
+    
 
     const data = useContext(ChatContext);
    
@@ -21,6 +33,32 @@ function Homeplay (){
     const openbot = () =>{
        
     }
+
+    const handleroom = (e:ChangeEvent<HTMLInputElement>) =>{
+      setuserroom(e.target.value)
+       
+    }
+
+    const handlename = (e:ChangeEvent<HTMLInputElement>) =>{
+      setname(e.target.value)
+       
+    }
+
+
+
+    const joinRoomHandler = () => {
+    
+      
+        alert("joined")
+      
+      
+        
+      };
+
+    useEffect(()=>{
+
+       
+    },[])
 
     return(
         <div className="home">
@@ -41,9 +79,21 @@ function Homeplay (){
             </div>
                 <h4>Already having a room ? Join it by the Id</h4>
             <div className="join">
-                <input type="text" placeholder='&nbsp; Enter room Id'/>    
-                <Link href={'/chat'}><button onClick={openchat}>Join</button></Link>
-            </div>  
+                <input type="text" placeholder='&nbsp; Enter room Id' onChange={handleroom}/>    
+                <input type="text" placeholder='&nbsp; Enter your name  ' onChange={handlename}/>    
+                <button onClick={joinRoomHandler}>Join</button>
+            </div> 
+
+            <Link href={`/chat?room=${room}&name=${name}`}>
+            <div className="bot">
+                <div className="botimg">
+                    <img src="/images/img2.jpeg" alt="" />
+                </div>
+                <h2>Start Chatting with your friends</h2>
+            </div>
+            
+            </Link>
+
             <Link href={'/bot'}>
             <div className="bot" onClick={openbot}>
                 <div className="botimg">

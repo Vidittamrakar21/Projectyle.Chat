@@ -99,6 +99,7 @@
     background-color: rgba(155, 154, 154, 0.432);
     color: aqua;
     font-size: 18px;
+    margin-top: 15px;
 }
 
 .join input::placeholder{
@@ -232,7 +233,7 @@
         justify-content: center;
         flex-direction: column;
         background-color: rgba(48, 47, 47, 0.541);
-        height: 150px;
+        height: 190px;
         width: 310px;
         /* border: 1px solid white; */
         border-radius: 8px;
@@ -249,6 +250,7 @@
         background-color: rgba(155, 154, 154, 0.432);
         color: aqua;
         font-size: 18px;
+        margin-top: 15px;
     }
     
     .join input::placeholder{

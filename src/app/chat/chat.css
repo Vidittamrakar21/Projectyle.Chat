@@ -135,6 +135,46 @@
     border-radius: 10px;
 }
 
+#typing {
+    height: 50px;
+    width:  250px;
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
+    /* padding: 8px; */
+}
+
+#typing h4{
+    font-weight: 400;
+}
+
+#joined{
+    height: 40px;
+    width: 200px;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+#joined h3{
+    color: white;
+    font-weight: 400;
+}
+
+#blue{
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background-color: rgb(43, 226, 156);;
+}
 @media only screen and (max-width: 600px){
     .chat{
         display: flex;
@@ -195,11 +235,11 @@
     .msg{
         display: flex;
         align-items: center;
-        font-size: 15px;
+        font-size: 14px;
         justify-content: center;
         min-height: 30px;
         min-width: 20px;
-        max-width: 150px;
+        max-width: 170px;
         border-radius: 10px;
         background-color: blueviolet;
         margin-top: 20px;
@@ -215,11 +255,11 @@
         margin-bottom: 10px;
         display: flex;
         align-items: center;
-        font-size: 15px;
+        font-size: 14px;
         justify-content: center;
         min-height: 30px;
         min-width: 20px;
-        max-width: 150px;
+        max-width: 170px;
         border-radius: 10px;
         background-color: rgb(43, 226, 156);
         margin-top: 20px;
@@ -232,7 +272,7 @@
     }
     
     #room{
-        background-color: rgb(48, 47, 47);
+        background-color: rgba(48, 47, 47, 0.61);
         height: 60px;
         width: 345px;
         border-radius: 10px;
@@ -263,6 +303,20 @@
         height: 100%;
         width: 100%;
         border-radius: 50px;
+    }
+
+    #joined{
+        height: 30px;
+        width: 200px;
+        background-color: rgb(71, 71, 71);
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 20px;
+        margin-left: 15px;
     }
 }
 
