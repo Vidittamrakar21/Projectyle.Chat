@@ -160,7 +160,7 @@
 
 #terms{
     position: relative;
-    top: 120px;
+    top: 20px;
     color: gray;
     font-weight: 500;
 }
@@ -176,6 +176,32 @@
     border-radius: 8px;
 }
 
+#logob{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+#logob img{
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
+#getstart{
+    color: black;
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+#headpro{
+    color: black;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
 @media only screen and (max-width: 600px){
     .outer{
         position: fixed;
@@ -339,5 +365,10 @@
         position: relative;
         top: 20px;
         left: 10px;
+    }
+    #logob{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
     }
 }
