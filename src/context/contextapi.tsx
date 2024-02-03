@@ -3,6 +3,8 @@ import React, { createContext, useState, ReactNode } from "react";
 type ContextProps = {
   log: boolean;
   openlog: (value: boolean) => void;
+  userb: boolean;
+  openuser: (value: boolean) => void;
   opt: boolean;
   openopt: (value: boolean) => void;
   socket: object | undefined;
@@ -16,11 +18,12 @@ export const ChatContext = createContext<ContextProps | undefined>(undefined);
 export const Chatprovider = ({ children }: { children: ReactNode }) => {
   const [log, openlog] = useState(false);
   const [opt, openopt] = useState(false);
+  const [userb, openuser] = useState(false);
   const [socket, setsocket] = useState({});
   const [room, setroom] = useState("");
 
   return (
-    <ChatContext.Provider value={{ log, openlog, opt, openopt ,setsocket, socket,room,setroom}}>
+    <ChatContext.Provider value={{ log, openlog, opt, openopt ,setsocket, socket,room,setroom, openuser,userb}}>
       <div>{children}</div>
     </ChatContext.Provider>
   );

@@ -5,21 +5,27 @@ import React ,{useMemo,useEffect, useState, ChangeEvent,useContext}from 'react';
 import { ChatContext } from '@/context/contextapi';
 import { io } from "socket.io-client";
 import { useRouter ,useSearchParams} from 'next/navigation';
+
 function Chatpage (){
   
   const router = useRouter()
   const data = useContext(ChatContext);
   const searchparams = useSearchParams()
-  
+  const [userb, openuser] = useState(false);
   const room = searchparams.get('room')
   const name = searchparams.get('name')
 
-    const [stat,setstatus] = useState(`${name} typing...`)
+  type chat =  {
+    from: string | null,
+    msg: string | null
+  } 
+
+    const [stat,setstatus] = useState(`${name} is typing...`)
     const [m,g] = useState("")
     const [message,setmsg] = useState("")
     // const [room, setroom] = useState("")
     const [typee, settype] = useState("")
-    const [chats, setchats] = useState([{from: name, msg: "" } ])
+    const [chats, setchats] = useState<chat[] | []>([])
     const [mychats, setmychats] = useState({} )
     const [state,setstate] = useState<string[]>([])
 
@@ -63,6 +69,12 @@ function Chatpage (){
         
       };
 
+      const openuserbox = ()=>{
+        openuser(!userb)
+      }
+      const closeuserbox = ()=>{
+        openuser(false)
+      }
    
       
       useEffect(() => {
@@ -85,11 +97,21 @@ function Chatpage (){
             setchats((messages) => [...messages, data]);
           });
 
-          socket.on("user-joined", (data) => {
-            console.log(data);
+         
+            socket.on("user-joined", (data) => {
+              console.log(data);
+              setstate((messages) => [...messages, data]);
+             
+            });
+
+            socket.on("active-user", (data) => {
+              console.log(data);
+              // setstate((messages) => [...messages, data]);
+             
+            });
             
-            setstate((messages) => [...messages, data]);
-          });
+          
+            
 
           
       
@@ -109,10 +131,20 @@ function Chatpage (){
                <h2>Sweet Family</h2>
                <h4>{typee}</h4>
                </div>
+
+               <h4 id='acu' onClick={openuserbox}>Active users</h4>
             </div>
 
+            <div className={userb?"acubox":"gayab"}>
 
-            <div id="chatbox">
+               <div className={"acuboxuser"}>
+                  <div id='blue'>
+                   </div>
+                   <h3>Vidit</h3>
+                </div>
+              
+            </div>
+            <div id="chatbox" onClick={closeuserbox}>
               
                 {state.map((item)=>(
                    <div id='joined'>

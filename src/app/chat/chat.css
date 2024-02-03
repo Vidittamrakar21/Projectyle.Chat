@@ -93,7 +93,7 @@
 }
 
 #room{
-    background-color: rgba(48, 47, 47, 0.61);
+    background-color: rgba(87, 86, 86, 0.61);
     height: 60px;
     width: 1100px;
     border-radius: 10px;
@@ -175,6 +175,50 @@
     border-radius: 50px;
     background-color: rgb(43, 226, 156);;
 }
+
+.gayab{
+    display: none;
+    /* position: relative; */
+}
+
+#acu{
+    font-weight: 400;
+    position: relative;
+    left: 600px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.acubox{
+    min-height: 90px;
+    width: 200px;
+    border-radius: 8px;
+    background-color: rgba(99, 98, 98, 0.507);
+    /* filter: blur(4px); */
+    position: fixed;
+    /* z-inde; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 70px;
+    right: 420px;
+}
+.acuboxuser {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50px;
+    width: 180px;
+    border-radius: 8px;
+    background-color: rgba(58, 58, 58, 0.507);
+    margin-top: 15px;
+}
+
+.acuboxuser h3{
+    margin-left: 10px;
+    font-weight: 400;
+}
 @media only screen and (max-width: 600px){
     .chat{
         display: flex;
@@ -196,7 +240,7 @@
         flex-direction: column;
         /* overflow: hidden; */
         /* overflow-y: scroll; */
-        margin-top: 0px;
+        margin-top: 88px;
     }
     
     #inpbox{
@@ -272,7 +316,7 @@
     }
     
     #room{
-        background-color: rgba(48, 47, 47, 0.61);
+        background-color: rgba(87, 86, 86, 0.61);
         height: 60px;
         width: 345px;
         border-radius: 10px;
@@ -293,8 +337,8 @@
     }
     
     #logo{
-        height: 55px;
-        width: 55px;
+        min-width: 55px;
+        min-width: 55px;
         border-radius: 50px;
         margin-left: 10px;
     }
@@ -317,6 +361,45 @@
         align-items: center;
         margin-top: 20px;
         margin-left: 15px;
+    }
+
+    #acu{
+        font-weight: 400;
+        position: relative;
+        left: 0px;
+        font-size: 12px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .acubox{
+        min-height: 90px;
+        width: 150px;
+        border-radius: 8px;
+        background-color: rgba(99, 98, 98, 0.507);
+        /* filter: blur(4px); */
+        position: fixed;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 80px;
+        right: 10px;
+    }
+    .acuboxuser {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 50px;
+        width: 120px;
+        border-radius: 8px;
+        background-color: rgba(58, 58, 58, 0.507);
+        margin-top: 15px;
+    }
+    
+    .acuboxuser h3{
+        margin-left: 10px;
+        font-weight: 400;
     }
 }
 
