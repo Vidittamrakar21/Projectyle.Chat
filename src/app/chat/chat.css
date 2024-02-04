@@ -175,6 +175,12 @@
     border-radius: 50px;
     background-color: rgb(43, 226, 156);;
 }
+#red{
+    height: 10px;
+    width: 10px;
+    border-radius: 50px;
+    background-color: rgb(226, 43, 43);;
+}
 
 .gayab{
     display: none;

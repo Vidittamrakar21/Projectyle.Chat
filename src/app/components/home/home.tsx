@@ -4,6 +4,7 @@ import { useContext ,useMemo, useState, ChangeEvent} from 'react';
 import { ChatContext } from '@/context/contextapi';
 import Link from 'next/link';
 import { io } from "socket.io-client";
+import {useRouter} from 'next/navigation'
 
 function Homeplay (){
 
@@ -20,14 +21,14 @@ function Homeplay (){
     
 
     const data = useContext(ChatContext);
-   
+   const router  = useRouter();
 
     const handleclick =()=>{
        data?.openlog(true);
     }
 
     const openchat = () =>{
-      
+      router.push(`/chat?room=${room}&name=${name}`)
     }
 
     const openbot = () =>{
@@ -81,10 +82,10 @@ function Homeplay (){
             <div className="join">
                 <input type="text" placeholder='&nbsp; Enter room Id' onChange={handleroom}/>    
                 <input type="text" placeholder='&nbsp; Enter your name  ' onChange={handlename}/>    
-                <button onClick={joinRoomHandler}>Join</button>
+                <button onClick={openchat}>Join</button>
             </div> 
 
-            <Link href={`/chat?room=${room}&name=${name}`}>
+            {/* <Link href={`/chat?room=${room}&name=${name}`}>
             <div className="bot">
                 <div className="botimg">
                     <img src="/images/img2.jpeg" alt="" />
@@ -92,7 +93,7 @@ function Homeplay (){
                 <h2>Start Chatting with your friends</h2>
             </div>
             
-            </Link>
+            </Link> */}
 
             <Link href={'/bot'}>
             <div className="bot" onClick={openbot}>

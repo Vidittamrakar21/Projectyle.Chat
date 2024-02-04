@@ -1,10 +1,11 @@
 "use client"
 
 import './chat.css';
-import React ,{useMemo,useEffect, useState, ChangeEvent,useContext}from 'react';
+import React ,{useMemo,useEffect, useState, ChangeEvent,useContext, KeyboardEvent}from 'react';
 import { ChatContext } from '@/context/contextapi';
 import { io } from "socket.io-client";
 import { useRouter ,useSearchParams} from 'next/navigation';
+import EmojiPicker , {Theme}from 'emoji-picker-react';
 
 function Chatpage (){
   
@@ -28,6 +29,8 @@ function Chatpage (){
     const [chats, setchats] = useState<chat[] | []>([])
     const [mychats, setmychats] = useState({} )
     const [state,setstate] = useState<string[]>([])
+    const [left,isleft] = useState<string[]>([])
+    const [active,isactive] = useState<string[]>([`${name}`])
 
     const socket = useMemo(
       () =>
@@ -76,31 +79,61 @@ function Chatpage (){
         openuser(false)
       }
    
+   
       
       useEffect(() => {
 
+        let isMounted = true;
           // setroom(`${data?.room}`)
           // console.log(data?.room)
           console.log(socket)
           socket.emit("chatstart", name);
-          joinRoomHandler()
+
+          if(isMounted){
+
+            joinRoomHandler()
+          }
 
           socket.on("receive-status", (data) => {
+           if(isMounted){
             console.log(data);
             settype(data)
+           }
             // setMessages((messages) => [...messages, data]);
           });
 
           socket.on("receive-message", (data) => {
-            console.log(data);
-            
+            if(isMounted){
+              console.log(data);
             setchats((messages) => [...messages, data]);
+            }
           });
 
          
             socket.on("user-joined", (data) => {
-              console.log(data);
+              if(isMounted){
+                console.log(data);
               setstate((messages) => [...messages, data]);
+
+              socket.emit('send-name', {room, name});
+              }
+             
+            });
+
+            socket.on("user-left", (data) => {
+              if(isMounted){
+                console.log(data);
+              isleft((messages) => [...messages, data]);
+              }
+             
+            });
+
+            socket.on("my-name", (data) => {
+              if(isMounted){
+                // console.log("myname",data);
+                isactive((messages) => [...messages, data]);
+             
+              }
              
             });
 
@@ -109,16 +142,26 @@ function Chatpage (){
               // setstate((messages) => [...messages, data]);
              
             });
-            
+
+            socket.on("leeft", (data) => {
+              if(isMounted){
+               
+                isactive( active.filter(item => item !== data))
+             
+              }
+             
+            });
+           
           
-            
+            return () => {
+              isMounted = false;
+              // Additional cleanup logic if needed
+            };
 
           
       
     
-        // return () => {
-        //   socket.disconnect();
-        // };
+       
       }, []);
     return(
         <div className="chat">
@@ -137,11 +180,13 @@ function Chatpage (){
 
             <div className={userb?"acubox":"gayab"}>
 
-               <div className={"acuboxuser"}>
-                  <div id='blue'>
-                   </div>
-                   <h3>Vidit</h3>
-                </div>
+              {active.map((item)=>(
+                 <div className={"acuboxuser"}>
+                 <div id='blue'>
+                  </div>
+                  <h3>{item}</h3>
+               </div>
+              ))}
               
             </div>
             <div id="chatbox" onClick={closeuserbox}>
@@ -159,14 +204,22 @@ function Chatpage (){
                      <p><span>{item.from=== name?"me":item.from}</span>{item.msg}</p>
                  </div>
                 ))}
+
+                 {left.map((item)=>(
+                   <div id='joined'>
+                   <div id='red'>
+                   </div>
+                   <h3>{item}</h3>
+                 </div>
+                ))} 
                 
                
                 
             </div>
             <div id="inpbox">
-                
+                {/* <EmojiPicker open={true} width={550} height={300}/> */}
                 <input type="text" placeholder='&nbsp; Type Something..' onChange={handleSubmit} value={message}/>
-                <button onClick={sendmessage}>Send</button>
+                <button onClick={sendmessage} >Send</button>
             </div>
         </div>
     )
