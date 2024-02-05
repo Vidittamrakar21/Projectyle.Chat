@@ -13,6 +13,7 @@ function Chatpage (){
   const data = useContext(ChatContext);
   const searchparams = useSearchParams()
   const [userb, openuser] = useState(false);
+  
   const room = searchparams.get('room')
   const name = searchparams.get('name')
 

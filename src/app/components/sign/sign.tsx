@@ -5,6 +5,9 @@ import './sign.css'
 import React from 'react';
 import { useState,useContext,useRef} from 'react';
 import { ChatContext } from '@/context/contextapi';
+import {auth} from "../../firebase"
+import {signInWithPopup , GoogleAuthProvider} from "firebase/auth"
+import axios from 'axios';
 
 
 
@@ -14,6 +17,10 @@ function Signpage (){
    
     const [but , show] = useState(false)
     const [sign , showsign] = useState(true)
+
+    const googleAuth = new GoogleAuthProvider();
+
+
 
 
     const handleclick = () =>{
@@ -38,6 +45,20 @@ function Signpage (){
     }
 
     const signwithgoogle= async ()=>{
+       const result  =  await signInWithPopup(auth, googleAuth);
+       console.log(result);
+       const isverified = result.user.emailVerified
+       if(isverified){
+       
+
+        const data = await (await axios.post('http://localhost:8080/api/sign', {email : result.user.email, name: result.user.displayName})).data;
+
+        if(data){
+             alert("Logged In Successfully!")
+      
+        }
+
+       }
        
     }
 
@@ -65,7 +86,7 @@ function Signpage (){
                 <img src="/images/logo.jpeg" alt="" />
                </div>
                 <h1 id='headpro'>Projectyle.Chat</h1>
-                <div className="coon" onClick={opencard} >
+                <div className="coon" onClick={signwithgoogle} >
                     <div id='gog'>
                         <img src="/images/Google Icon.png" alt="" />
                     </div>
