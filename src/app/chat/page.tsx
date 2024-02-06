@@ -67,9 +67,13 @@ function Chatpage (){
         setmsg("")
       }
 
+      const [isroom , setroom] = useState(true);
+
       const joinRoomHandler = () => {
     
-        socket.emit("join-room", room);
+      
+          socket.emit("join-room", room);
+        
         
       };
 
@@ -156,14 +160,12 @@ function Chatpage (){
           
             return () => {
               isMounted = false;
+              socket.offAnyOutgoing()
               // Additional cleanup logic if needed
             };
 
-          
-      
-    
        
-      }, []);
+      }, [socket]);
     return(
         <div className="chat">
 
