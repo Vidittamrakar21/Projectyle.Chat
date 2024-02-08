@@ -51,11 +51,12 @@ function Signpage (){
        if(isverified){
        
 
-        const data = await (await axios.post('http://localhost:8080/api/sign', {email : result.user.email, name: result.user.displayName})).data;
+        const udata = await (await axios.post('http://localhost:8080/api/sign', {email : result.user.email, name: result.user.displayName})).data;
 
-        if(data){
+        if(udata){
              alert("Logged In Successfully!")
-      
+            data?.openlog(false)
+            data?.openopt(true)
         }
 
        }

@@ -156,6 +156,10 @@ function Chatpage (){
               }
              
             });
+
+            
+            // socket.emit('user-disconnect', name)
+            
            
           
             return () => {
