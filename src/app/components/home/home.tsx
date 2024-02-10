@@ -5,6 +5,7 @@ import { ChatContext } from '@/context/contextapi';
 import Link from 'next/link';
 import { io } from "socket.io-client";
 import {useRouter} from 'next/navigation'
+import axios from 'axios';
 
 function Homeplay (){
 
@@ -27,8 +28,23 @@ function Homeplay (){
        data?.openlog(true);
     }
 
-    const openchat = () =>{
-      router.push(`/chat?room=${room}&name=${name}`)
+    const openchat = async () =>{
+       if(!(room && name)){
+        alert("All the fields are required !")
+
+       }
+
+       else{
+        const newroom = await (await axios.post('http://localhost:8080/roomapi/findroom',{id: room })).data
+        if(newroom._id){
+
+           
+            router.push(`/chat?room=${newroom._id}&name=${name}&roomname=${newroom.roomname}`)
+        }
+        else{
+            alert("Unable to find the room !, try again with the correct room id.")
+        }
+       }
     }
 
     const openbot = () =>{

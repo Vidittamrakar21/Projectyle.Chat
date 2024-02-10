@@ -6,6 +6,9 @@ import { ChatContext } from '@/context/contextapi';
 import { io } from "socket.io-client";
 import { useRouter ,useSearchParams} from 'next/navigation';
 import EmojiPicker , {Theme}from 'emoji-picker-react';
+import axios from 'axios';
+
+// let room: string;
 
 function Chatpage (){
   
@@ -13,9 +16,10 @@ function Chatpage (){
   const data = useContext(ChatContext);
   const searchparams = useSearchParams()
   const [userb, openuser] = useState(false);
-  
-  const room = searchparams.get('room')
+  const roomid = searchparams.get('room')
   const name = searchparams.get('name')
+  // let room: string;
+  const room= searchparams.get('roomname')
 
   type chat =  {
     from: string | null,
@@ -25,7 +29,7 @@ function Chatpage (){
     const [stat,setstatus] = useState(`${name} is typing...`)
     const [m,g] = useState("")
     const [message,setmsg] = useState("")
-    // const [room, setroom] = useState("")
+    // const [room, setroomo] = useState("")
     const [typee, settype] = useState("")
     const [chats, setchats] = useState<chat[] | []>([])
     const [mychats, setmychats] = useState({} )
@@ -72,7 +76,7 @@ function Chatpage (){
       const joinRoomHandler = () => {
     
       
-          socket.emit("join-room", room);
+          socket.emit("join-room", {room, name});
         
         
       };
@@ -84,6 +88,26 @@ function Chatpage (){
         openuser(false)
       }
    
+      const [imagepath, seturl] = useState("");
+
+      const findroom = async () =>{
+        const newroom = await (await axios.post('http://localhost:8080/roomapi/findroom',{id: roomid })).data
+        if(newroom){
+            if(!(newroom.roomname === room && newroom._id === roomid)){
+              alert("Invalid room!")
+              router.push('/')
+            }
+            else{
+              seturl(newroom.imageurl)
+
+            }
+        
+          
+        }
+        else{
+            alert("Unable to find the room ., try again !")
+        }
+    }
    
       
       useEffect(() => {
@@ -95,7 +119,7 @@ function Chatpage (){
           socket.emit("chatstart", name);
 
           if(isMounted){
-
+            findroom()
             joinRoomHandler()
           }
 
@@ -136,16 +160,18 @@ function Chatpage (){
             socket.on("my-name", (data) => {
               if(isMounted){
                 // console.log("myname",data);
-                isactive((messages) => [...messages, data]);
+                // isactive((messages) => [...messages, data]);
              
               }
              
             });
 
             socket.on("active-user", (data) => {
-              console.log(data);
+              if(isMounted){
+              console.log("allusers",data);
               // setstate((messages) => [...messages, data]);
-             
+              isactive((messages) => [...messages, data]);
+              }
             });
 
             socket.on("leeft", (data) => {
@@ -170,15 +196,16 @@ function Chatpage (){
 
        
       }, [socket]);
+      
     return(
         <div className="chat">
 
             <div id="room">
                 <div id="logo">
-                    <img src="/images/img2.jpeg" alt="" />
+                    <img src={imagepath} alt="" />
                 </div>
                <div id='typing'>
-               <h2>Sweet Family</h2>
+               <h2>{room}</h2>
                <h4>{typee}</h4>
                </div>
 
