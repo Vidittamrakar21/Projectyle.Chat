@@ -11,7 +11,13 @@ import axios from 'axios';
 // let room: string;
 
 function Chatpage (){
-  
+
+  type Item = {
+    name: string
+    room: string
+    id: string
+  }
+ 
   const router = useRouter()
   const data = useContext(ChatContext);
   const searchparams = useSearchParams()
@@ -34,8 +40,8 @@ function Chatpage (){
     const [chats, setchats] = useState<chat[] | []>([])
     const [mychats, setmychats] = useState({} )
     const [state,setstate] = useState<string[]>([])
-    const [left,isleft] = useState<string[]>([])
-    const [active,isactive] = useState<string[]>([`${name}`])
+    const [left,isleft] = useState<Item[]>([])
+    const [active,isactive] = useState<Item[]>([{name: "",room: "", id:""}])
 
     const socket = useMemo(
       () =>
@@ -108,6 +114,7 @@ function Chatpage (){
             alert("Unable to find the room ., try again !")
         }
     }
+
    
       
       useEffect(() => {
@@ -151,8 +158,9 @@ function Chatpage (){
 
             socket.on("user-left", (data) => {
               if(isMounted){
-                console.log(data);
-              isleft((messages) => [...messages, data]);
+             
+                isleft(data);
+              // isleft((messages) => [...messages, data]);
               }
              
             });
@@ -170,14 +178,16 @@ function Chatpage (){
               if(isMounted){
               console.log("allusers",data);
               // setstate((messages) => [...messages, data]);
-              isactive((messages) => [...messages, data]);
+              isactive(data);
               }
             });
 
             socket.on("leeft", (data) => {
               if(isMounted){
+               console.log("current user",data)
                
-                isactive( active.filter(item => item !== data))
+               isactive(data);
+                // isactive( active.filter(item => item !== data))
              
               }
              
@@ -214,11 +224,12 @@ function Chatpage (){
 
             <div className={userb?"acubox":"gayab"}>
 
-              {active.map((item)=>(
-                 <div className={"acuboxuser"}>
+              {active.map((item: Item)=>(
+              
+                <div className={item.room === room ? "acuboxuser": "gayab"}>
                  <div id='blue'>
-                  </div>
-                  <h3>{item}</h3>
+                  </div>          
+                 <h3>{item.name}</h3>
                </div>
               ))}
               
@@ -239,13 +250,13 @@ function Chatpage (){
                  </div>
                 ))}
 
-                 {left.map((item)=>(
+                 {left.length>0?left.map((item)=>(
                    <div id='joined'>
                    <div id='red'>
                    </div>
-                   <h3>{item}</h3>
+                   <h3>{item.name} left {item.room}</h3>
                  </div>
-                ))} 
+                )): <></>} 
                 
                
                 
