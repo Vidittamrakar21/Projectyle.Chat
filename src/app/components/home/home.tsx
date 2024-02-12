@@ -26,15 +26,15 @@ function Homeplay (){
        }
 
        else{
-        const newroom = await (await axios.post('https://projectyle-chat-backend.vercel.app/roomapi/findroom',{id: room })).data
-        if(newroom._id){
+        // const newroom = await (await axios.post('https://projectyle-chat-backend.vercel.app/roomapi/findroom',{id: room })).data
+        // if(newroom._id){
 
            
-            router.push(`/chat?room=${newroom._id}&name=${name}&roomname=${newroom.roomname}`)
-        }
-        else{
-            alert("Unable to find the room !, try again with the correct room id.")
-        }
+            router.push(`/chat?room=${8582525}&name=${name}&roomname=${room}`)
+        // }
+        // else{
+        //     alert("Unable to find the room !, try again with the correct room id.")
+        // }
        }
     }
 

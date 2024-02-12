@@ -126,7 +126,7 @@ function Chatpage (){
           socket.emit("chatstart", name);
 
           if(isMounted){
-            findroom()
+            // findroom()
             joinRoomHandler()
           }
 
