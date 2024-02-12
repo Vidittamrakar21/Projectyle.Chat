@@ -9,6 +9,10 @@ import {auth} from "../../firebase"
 import {signInWithPopup , GoogleAuthProvider} from "firebase/auth"
 import axios from 'axios';
 
+// import { cookies } from 'next/headers'
+
+ 
+
 
 
 
@@ -44,16 +48,22 @@ function Signpage (){
        data?.openlog(false)
     }
 
+  
     const signwithgoogle= async ()=>{
        const result  =  await signInWithPopup(auth, googleAuth);
        console.log(result);
+       //@ts-ignore
+       console.log(result._tokenResponse.refreshToken);
        const isverified = result.user.emailVerified
        if(isverified){
        
 
-        const udata = await (await axios.post('http://localhost:8080/api/sign', {email : result.user.email, name: result.user.displayName})).data;
+        const udata = await (await axios.post('https://projectyle-chat-backend.vercel.app/api/sign', {email : result.user.email, name: result.user.displayName})).data;
 
         if(udata){
+            // const oneDay = 24 * 60 * 60 * 1000
+            //@ts-ignore
+        //    cookies().set('refreshtoken', result._tokenResponse.refreshToken, { expires: Date.now() - oneDay, httpOnly: true })
              alert("Logged In Successfully!")
             data?.openlog(false)
             data?.openopt(true)

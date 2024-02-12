@@ -45,7 +45,7 @@ function Chatpage (){
 
     const socket = useMemo(
       () =>
-        io("http://localhost:8080", {
+        io("https://projectyle-chat-backend.vercel.app", {
           withCredentials: true,
         }),
       []
@@ -97,7 +97,7 @@ function Chatpage (){
       const [imagepath, seturl] = useState("");
 
       const findroom = async () =>{
-        const newroom = await (await axios.post('http://localhost:8080/roomapi/findroom',{id: roomid })).data
+        const newroom = await (await axios.post('https://projectyle-chat-backend.vercel.app/roomapi/findroom',{id: roomid })).data
         if(newroom){
             if(!(newroom.roomname === room && newroom._id === roomid)){
               alert("Invalid room!")
@@ -224,9 +224,9 @@ function Chatpage (){
 
             <div className={userb?"acubox":"gayab"}>
 
-              {active.map((item: Item)=>(
+              {active.map((item: Item , index)=>(
               
-                <div className={item.room === room ? "acuboxuser": "gayab"}>
+                <div className={item.room === room ? "acuboxuser": "gayab"} key={index}>
                  <div id='blue'>
                   </div>          
                  <h3>{item.name}</h3>
@@ -235,9 +235,11 @@ function Chatpage (){
               
             </div>
             <div id="chatbox" onClick={closeuserbox}>
+
+              <h3 id='cdel'>Chats will be deleted automatically after viewing.</h3>
               
-                {state.map((item)=>(
-                   <div id='joined'>
+                {state.map((item, index)=>(
+                   <div id='joined' key={index}>
                    <div id='blue'>
                    </div>
                    <h3>{item}</h3>
@@ -250,8 +252,8 @@ function Chatpage (){
                  </div>
                 ))}
 
-                 {left.length>0?left.map((item)=>(
-                   <div id='joined'>
+                 {left.length>0?left.map((item ,index)=>(
+                   <div id='joined' key={index}>
                    <div id='red'>
                    </div>
                    <h3>{item.name} left {item.room}</h3>

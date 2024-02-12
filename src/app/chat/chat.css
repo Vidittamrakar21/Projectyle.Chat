@@ -229,6 +229,13 @@
     margin-left: 10px;
     font-weight: 400;
 }
+
+#cdel{
+    font-weight: 400;
+    color: rgb(116, 115, 115);
+    margin-left: 50px;
+    margin-top: 20px;
+}
 @media only screen and (max-width: 600px){
     .chat{
         display: flex;
@@ -250,7 +257,7 @@
         flex-direction: column;
         /* overflow: hidden; */
         /* overflow-y: scroll; */
-        margin-top: 88px;
+        margin-top: 10px;
     }
     
     #inpbox{
@@ -410,6 +417,14 @@
     .acuboxuser h3{
         margin-left: 10px;
         font-weight: 400;
+    }
+
+    #cdel{
+        font-weight: 400;
+        font-size: 14px;
+        color: rgb(116, 115, 115);
+        margin-left: 20px;
+        margin-top: 20px;
     }
 }
 

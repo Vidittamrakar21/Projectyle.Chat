@@ -12,15 +12,6 @@ function Homeplay (){
     const [room,setuserroom] = useState("")
     const [name,setname] = useState("")
 
-    // const socket = useMemo(
-    //     () =>
-    //       io("http://localhost:8080", {
-    //         withCredentials: true,
-    //       }),
-    //     []
-    //   )
-    
-
     const data = useContext(ChatContext);
    const router  = useRouter();
 
@@ -35,7 +26,7 @@ function Homeplay (){
        }
 
        else{
-        const newroom = await (await axios.post('http://localhost:8080/roomapi/findroom',{id: room })).data
+        const newroom = await (await axios.post('https://projectyle-chat-backend.vercel.app/roomapi/findroom',{id: room })).data
         if(newroom._id){
 
            
@@ -101,24 +92,6 @@ function Homeplay (){
                 <button onClick={openchat}>Join</button>
             </div> 
 
-            {/* <Link href={`/chat?room=${room}&name=${name}`}>
-            <div className="bot">
-                <div className="botimg">
-                    <img src="/images/img2.jpeg" alt="" />
-                </div>
-                <h2>Start Chatting with your friends</h2>
-            </div>
-            
-            </Link> */}
-
-            <Link href={'/bot'}>
-            <div className="bot" onClick={openbot}>
-                <div className="botimg">
-                    <img src="/images/img5.jpg" alt="" />
-                </div>
-                <h2>Chat with our Chatbot</h2>
-            </div>
-            </Link>  
 
         </div>
     )
