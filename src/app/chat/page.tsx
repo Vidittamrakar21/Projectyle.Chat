@@ -45,7 +45,10 @@ function Chatpage (){
 
     const socket = useMemo(
       () =>
-        io("https://projectyle-chat-backend.vercel.app"),
+        io("https://projectyle-chat-backend.vercel.app", {
+          withCredentials: true
+          
+        }),
       []
     )
 
