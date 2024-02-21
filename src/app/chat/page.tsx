@@ -43,6 +43,7 @@ function Chatpage (){
     const [left,isleft] = useState<Item[]>([])
     const [active,isactive] = useState<Item[]>([{name: "",room: "", id:""}])
 
+   
     const socket = useMemo(
       () =>
         io("https://projectyle-chat-backend.vercel.app/"),
@@ -51,7 +52,8 @@ function Chatpage (){
 
     const handleSubmit = async (e:ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
-
+    
+        
         if(e.target.value === ""){
             //  setstatus("")
              setmsg("")
