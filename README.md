@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projectyle.Chat
 
-## Getting Started
+This is a real-time chat web application built using Next.js for the frontend, Node.js and Express.js for the backend, and Socket.IO for real-time communication. Firebase is used for Google authentication.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-Time Communication:** Utilizes Socket.IO for real-time messaging between users.
+- **Google Authentication:** Users can sign in using their Google accounts via Firebase authentication.
+- **Active User Tracking:** Displays active users in the chat room.
+- **Typing Indicator:** Shows when a user is typing a message.
+- **User Leave Notification:** Notifies when a user leaves the chat room.
+- **Multiple Users in a Single Room:** Allows multiple users to chat in the same room simultaneously.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Create Room:** Start by creating a chat room.
+2. **Get Room ID:** Upon creation, the application will generate a unique room ID.
+3. **Share Room ID:** Copy the generated room ID and share it with your friends.
+4. **Join Room:** Friends can join the room by entering the shared room ID.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation (Frontend)
 
-## Learn More
+1. Clone the repository:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git clone https://github.com/Vidittamrakar21/Projectyle.Chat.git
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Install Node_modules
+     ```bash
+   npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+3. Run on your localhost (port: 8080)
+   ```bash
+   npm run dev
+   
+## For Backend
+ Refer <a href="https://github.com/Vidittamrakar21/Projectyle.Chat_Backend.git"> Here.</a>
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Made with ❤️ by Vidit Tamrakar
