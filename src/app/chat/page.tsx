@@ -46,7 +46,7 @@ function Chatpage (){
    
     const socket = useMemo(
       () =>
-        io("https://projectyle-chat-backend.vercel.app/"),
+        io("http://localhost:8080"),
       []
     )
 
@@ -97,7 +97,7 @@ function Chatpage (){
       const [imagepath, seturl] = useState("");
 
       const findroom = async () =>{
-        const newroom = await (await axios.post('https://projectyle-chat-backend.vercel.app/roomapi/findroom',{id: roomid })).data
+        const newroom = await (await axios.post('http://localhost:8080/roomapi/findroom',{id: roomid })).data
         if(newroom){
             if(!(newroom.roomname === room && newroom._id === roomid)){
               alert("Invalid room!")
